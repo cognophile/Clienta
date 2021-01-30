@@ -1,0 +1,89 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Clienta.Models.Employee
+@{
+    ViewData["Title"] = $"{ViewData["Action"]} Employee";
+}
+
+<div class="container">
+    <h2 class="p-3">@ViewData["Action"] Employee</h2>
+    <fieldset class="pt-3">
+        @if (@ViewData["Action"].ToString() == "Create")
+        {
+            <form asp-action="@ViewData["Action"]" asp-controller="Employee" method="post">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="validation-summary alert alert-danger alert-dismissible" role="alert"> </div>
+                }
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Forename"></label>
+                        <input asp-for="Forename" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Surname"></label>
+                        <input asp-for="Surname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="DateOfBirth"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="StartDate"></label>
+                        <input asp-for="StartDate" type="date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row float-right">
+                    <button type="submit" class="btn btn-primary">@ViewData["Action"]</button>
+                </div>
+            </form>
+        }
+        else
+        {
+            <form asp-action="@ViewData["Action"]" asp-controller="Employee" asp-route-id="@Model.Id" method="post">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="validation-summary alert alert-danger alert-dismissible" role="alert"> </div>
+                }
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Forename"></label>
+                        <input asp-for="Forename" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Surname"></label>
+                        <input asp-for="Surname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="DateOfBirth"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="StartDate"></label>
+                        <input disabled asp-for="StartDate" type="date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="EmployeeNumber"></label>
+                        <input disabled asp-for="EmployeeNumber" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+
+                    </div>
+                </div>
+
+                <div class="form-row float-right">
+                    <button type="submit" class="btn btn-primary">@ViewData["Action"]</button>
+                </div>
+            </form>
+        }
+    </fieldset>
+</div>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clienta", "Clienta\Clienta.csproj", "{6C4F8CF8-D29D-467D-8B10-5CCFCEF36B0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clienta.Test", "Clienta.Test\Clienta.Test.csproj", "{8ABC3995-2FE0-4F2F-881C-E25027C159C9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C4F8CF8-D29D-467D-8B10-5CCFCEF36B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4F8CF8-D29D-467D-8B10-5CCFCEF36B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4F8CF8-D29D-467D-8B10-5CCFCEF36B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4F8CF8-D29D-467D-8B10-5CCFCEF36B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ABC3995-2FE0-4F2F-881C-E25027C159C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ABC3995-2FE0-4F2F-881C-E25027C159C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ABC3995-2FE0-4F2F-881C-E25027C159C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ABC3995-2FE0-4F2F-881C-E25027C159C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8DA9D1DC-2325-4752-B7B3-02A120CD0A2A}
+	EndGlobalSection
+EndGlobal

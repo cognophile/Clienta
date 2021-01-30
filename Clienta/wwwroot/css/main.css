@@ -1,0 +1,83 @@
+﻿/* Bootstrap Overloads */
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+    color: #ffffff !important;
+    background-color: #ac1a2d !important;
+    border-color: #ac1a2d !important;
+}
+
+.btn-primary:hover {
+    color: #ffffff !important;
+    background-color: #cf4457 !important;
+    border-color: #cf4457 !important;
+}
+
+.btn-outline-primary {
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    border-color: #ac1a2d !important;
+}
+
+.btn-outline-primary:hover {
+    color: #ffffff !important;
+    background-color: #cf4457 !important;
+    border-color: #cf4457 !important;
+}
+
+.badge-primary {
+    color: #ffffff !important;
+    background-color: #ac1a2d !important;
+    border-color: #ac1a2d !important;
+}
+
+.dropdown-menu, .dropdown-menu.show {
+    color: #ffffff !important;
+    background-color: #ac1a2d !important;
+    border-color: #ac1a2d !important;
+}
+
+.dropdown-item {
+    color: #ffffff !important;
+    background-color: #ac1a2d !important;
+    border-color: #ac1a2d !important;
+}
+
+.dropdown-item:hover {
+    color: #ac1a2d !important;
+    background-color: #ffffff !important;
+    border-color: #ac1a2d !important;
+}
+
+.nav-tabs > nav-link.active {
+    background-color: #ac1a2d !important;
+}
+
+.nav-tabs > nav-link.active > a {
+    color: #ffffff !important;
+}
+
+.nav-tabs > nav-link > a {
+    color: #ac1a2d !important;
+}
+
+.nav-tabs > nav-link > a:hover {
+    color: #cf4457 !important;
+}
+
+/* Razor Overloads */
+.field-validation-valid {
+    display: none;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Custom */
+.w-25em {
+    width: 25em;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+}

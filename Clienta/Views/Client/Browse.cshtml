@@ -1,0 +1,103 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Clienta.Models.Client>
+@{
+    ViewData["Title"] = "Clients";
+    ViewData["Entity"] = "Client";
+}
+
+<div class="container col-10">
+    <div class="row">
+        <form asp-action="Browse" asp-controller="Client" method="GET" class="col-12 pl-0 pr-4">
+            <div class="input-group mt-3 mb-3">
+                <input type="text" class="form-control" placeholder="@ViewData["Entity"] name" name="search" aria-label="@ViewData["Entity"] name">
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                    <button href="@Url.Action("Browse", "Client")" class="btn btn-primary">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Client Id</th>
+                    <th scope="col">Forname</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Date of birth</th>
+                    <th scope="col">Assigned Consultant</th>
+                    <th scope="col">Addresses</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td scope="row">@item.Id</td>
+                    <td scope="row">@item.Forename</td>
+                    <td scope="row">@item.Surname</td>
+                    <td scope="row">@item.GetFormattedDateOfBirth()</td>
+                    @if (item.Employee != null)
+                    {
+                        <td scope="row">@item.Employee.GetFullname()</td>
+                    }
+                    else
+                    {
+                        <td scope="row">N/A</td>
+                    }
+                    <td scope="row">
+                        <ul>
+                            @foreach (var address in item.Addresses)
+                            {
+                                <li>@address.ToString()</li>
+                            }
+                        </ul>
+                    </td>
+                    <td scope="row">
+                        <a class="btn btn-outline-primary" asp-action="Read" asp-controller="Client" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Client" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination float-left">
+                        @if (ViewBag.HasPreviousPage)
+                        {
+                            <a role="button" class="page-item btn btn-primary" href="@Url.Action("Browse", "Client" , new { page = ViewBag.PreviousPage })">
+                                &lt; Back
+                            </a>
+                        }
+                        else
+                        {
+                            <a role="button" class="page-item btn btn-primary disabled" href="@Url.Action("Browse", "Client" , new { page = ViewBag.PreviousPage })" aria-disabled="true">
+                                &lt; Back
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="pagination float-right">
+                        @if (ViewBag.HasNextPage)
+                        {
+                            <a role="button" class="page-item btn btn-primary" href="@Url.Action("Browse", "Client" , new { page = ViewBag.NextPage })">
+                                Next &gt;
+                            </a>
+                        }
+                        else
+                        {
+                            <a role="button" class="page-item btn btn-primary disabled" href="@Url.Action("Browse", "Client" , new { page = ViewBag.NextPage })" aria-disabled="true">
+                                Next &gt;
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

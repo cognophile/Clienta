@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+    web:
+        build: .
+        ports:
+            - "8000:80"
+        depends_on:
+            - appdb
+            - idb
+    appdb:
+        image: "mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04"
+        environment:
+            SA_PASSWORD: "iSf83Jldj)#jfpd8"
+            ACCEPT_EULA: "Y"
+    idb:
+        image: "mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04"
+        environment:
+            SA_PASSWORD: "iSf83Jldj)#jfpd8"
+            ACCEPT_EULA: "Y"

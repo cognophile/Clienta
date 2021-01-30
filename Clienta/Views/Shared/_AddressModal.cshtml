@@ -1,0 +1,61 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Clienta.Models.Address
+<!-- Modal -->
+<div class="modal fade" id="create-address" tabindex="-1" role="dialog" aria-labelledby="createAddressLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createAddressLabel">Add address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" asp-controller="Address">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="All" class="validation-summary alert alert-danger alert-dismissible" role="alert"> </div>
+                    }
+
+                    <input name="is-valid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="LineOne"></label>
+                            <input asp-for="LineOne" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="LineTwo"></label>
+                            <input asp-for="LineTwo" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label asp-for="City"></label>
+                            <input asp-for="City" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="County"></label>
+                            <input asp-for="County" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Postcode"></label>
+                            <input asp-for="Postcode" class="form-control">
+                        </div>
+                        <div class="form-group col-md-8">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-save="modal">Create</button>
+            </div>
+        </div>
+    </div>
+</div>

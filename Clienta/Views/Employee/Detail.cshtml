@@ -1,0 +1,91 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Clienta
+@model Clienta.Models.Employee
+@{
+    ViewData["Title"] = "Employee details";
+}
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-12 col-lg-4 mb-3">
+            <img src="~/assets/avatar.png" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+        </div>
+
+        <div class="col-12 col-lg-8 order-1">
+            <ul class="nav nav-tabs" id="tab-navbar" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="associated-tab" data-toggle="tab" href="#associated" role="tab" aria-controls="associated" aria-selected="false">Associated</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="tab-content-area">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h5 class="mb-3 mt-5">Employee Profile</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Name</h6>
+                            <p>
+                                @Model.GetFullname()
+                            </p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h6>Date of Birth</h6>
+                            <p>
+                                @Model.GetFormattedDateOfBirth()
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Employee Number</h6>
+                            <p>
+                                @Model.EmployeeNumber.ToString()
+                            </p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h6>Start Date</h6>
+                            <p>
+                                @Model.GetFormattedStartDate()
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="associated" role="tabpanel" aria-labelledby="associated-tab">
+                    <h5 class="mb-3 mt-5">Associated Clients</h5>
+
+                    @if (Model.Clients.Count > 0)
+                    {
+                        <table class="table table-sm table-hover table-striped">
+                            <tbody>
+                                @foreach (var client in Model.Clients)
+                                {
+                                    <tr scope="row">
+                                        <td>@client.GetFullname() (@client.GetFormattedDateOfBirth())</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No Clients have been associated with this Employee, yet. Please visit a Client's profile to assign them to this Employee.</p>
+                    }
+                </div>
+                <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                    @await Component.InvokeAsync("EmployeeForm", new
+                    {
+                        Action = "Edit",
+                        Model = @Model
+                    })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

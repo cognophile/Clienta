@@ -1,0 +1,136 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Clienta.Models.Client
+@{
+    ViewData["Title"] = $"{ViewData["Action"]} Client";
+}
+
+<div class="container">
+    <h2 class="p-3">@ViewData["Action"] Client</h2>
+    <fieldset class="pt-3">
+        @if (@ViewData["Action"].ToString() == "Create")
+        {
+            <form asp-action="@ViewData["Action"]" asp-controller="Client" method="post">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="validation-summary alert alert-danger alert-dismissible" role="alert"> </div>
+                }
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Forename"></label>
+                        <input asp-for="Forename" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Surname"></label>
+                        <input asp-for="Surname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="DateOfBirth"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="EmployeeId"></label>
+                        <select class="form-control" asp-for="EmployeeId" asp-items="ViewBag.Employees">
+                            <option value="0">Select...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Addresses[0].LineOne"></label>
+                        <input asp-for="Addresses[0].LineOne" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Addresses[0].LineTwo"></label>
+                        <input asp-for="Addresses[0].LineTwo" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Addresses[0].City"></label>
+                        <input asp-for="Addresses[0].City" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="Addresses[0].County"></label>
+                        <input asp-for="Addresses[0].County" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="Addresses[0].Postcode"></label>
+                        <input asp-for="Addresses[0].Postcode" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row float-right">
+                    <button type="submit" class="btn btn-primary">@ViewData["Action"]</button>
+                </div>
+            </form>
+        }
+        else
+        {
+            <form asp-action="@ViewData["Action"]" asp-controller="Client" asp-route-id="@Model.Id" method="post">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="validation-summary alert alert-danger alert-dismissible" role="alert"> </div>
+                }                <input type="hidden" asp-for="Id" />
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Forename"></label>
+                        <input asp-for="Forename" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Surname"></label>
+                        <input asp-for="Surname" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="DateOfBirth"></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="EmployeeId"></label>
+                        <select class="form-control" asp-for="EmployeeId" asp-items="ViewBag.Employees">
+                            <option value="0">Select...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Addresses[0].LineOne"></label>
+                        <input asp-for="Addresses[0].LineOne" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Addresses[0].LineTwo"></label>
+                        <input asp-for="Addresses[0].LineTwo" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Addresses[0].City"></label>
+                        <input asp-for="Addresses[0].City" class="form-control">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="Addresses[0].County"></label>
+                        <input asp-for="Addresses[0].County" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label asp-for="Addresses[0].Postcode"></label>
+                        <input asp-for="Addresses[0].Postcode" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row float-right">
+                    <button type="submit" class="btn btn-primary">@ViewData["Action"]</button>
+                </div>
+            </form>
+        }
+    </fieldset>
+</div>

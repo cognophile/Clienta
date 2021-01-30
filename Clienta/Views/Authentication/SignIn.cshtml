@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Clienta.ViewModels.SignInViewModel
+@{ 
+    ViewData["Title"] = "Sign in";
+}
+
+<fieldset>
+    <div class="d-flex justify-content-center">
+        <div class="flex-column align-self-center text-center border border-light rounded bg-light p-5 m-5 w-25em">
+            <form role="form" asp-action="SignIn">
+                <h2>Please sign in</h2>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div asp-validation-summary="All" class="validation-summary alert alert-danger alert-dismissible" role="alert"> </div>
+                }
+
+                <div class="form-group flex-row">
+                    <label asp-for="Email"></label>
+                    <input type="email" asp-for="Email" class="form-control" />
+                </div>
+
+                <div class="form-group flex-row">
+                    <label asp-for="Password"></label>
+                    <input type="password" asp-for="Password" class="form-control" />
+                </div>
+
+                <div class="form-inline flex-row d-flex justify-content-center">
+                    <label asp-for="PersistSession"></label>
+                    <input type="checkbox" asp-for="PersistSession" class="form-check-input m-2" />
+                </div>
+
+                <div class="form-group flex-row d-flex justify-content-center mt-4">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn btn-primary">Sign in!</button>
+                </div>
+            </form>
+
+            <br />
+
+            <div class="form-group flex-row d-flex justify-content-center">
+                <label>Need an account?</label>&nbsp;
+                <a href="@Url.Action("Register", "Authentication")"> Create one!</a>
+            </div>
+        </div>
+    </div>
+</fieldset>

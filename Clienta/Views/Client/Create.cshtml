@@ -1,0 +1,8 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, Clienta
+@model Clienta.Models.Client
+@{
+    ViewData["Title"] = "Create Client";
+}
+
+@await Component.InvokeAsync("ClientForm", new { Action = "Create", Model = @Model })

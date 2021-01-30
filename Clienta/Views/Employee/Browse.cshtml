@@ -1,0 +1,89 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Clienta.Models.Employee>
+@{
+    ViewData["Title"] = "Employees";
+    ViewData["Entity"] = "Employee";
+}
+
+<div class="container col-10">
+    <div class="row">
+        <form asp-action="Browse" asp-controller="Employee" method="GET" class="col-12 pl-0 pr-4">
+            <div class="input-group mt-3 mb-3">
+                <input type="text" class="form-control" placeholder="@ViewData["Entity"] name" name="search" aria-label="@ViewData["Entity"] name">
+                <div class="input-group-append">
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                    <button href="@Url.Action("Browse", "Employee")" class="btn btn-primary">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Employee Id</th>
+                    <th scope="col">Forname</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Date of birth</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Employee Number</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td scope="row">@item.Id</td>
+                    <td scope="row">@item.Forename</td>
+                    <td scope="row">@item.Surname</td>
+                    <td scope="row">@item.GetFormattedDateOfBirth()</td>
+                    <td scope="row">@item.GetFormattedStartDate()</td>
+                    <td scope="row">@item.EmployeeNumber.ToString()</td>
+                    <td scope="row">
+                        <a class="btn btn-outline-primary" asp-action="Read" asp-controller="Employee" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Employee" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="pagination float-left">
+                        @if (ViewBag.HasPreviousPage)
+                        {
+                            <a role="button" class="page-item btn btn-primary" href="@Url.Action("Browse", "Employee" , new { page = ViewBag.PreviousPage })">
+                                &lt; Back
+                            </a>
+                        }
+                        else
+                        {
+                            <a role="button" class="page-item btn btn-primary disabled" href="@Url.Action("Browse", "Employee" , new { page = ViewBag.PreviousPage })" aria-disabled="true">
+                                &lt; Back
+                            </a>
+                        }
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="pagination float-right">
+                        @if (ViewBag.HasNextPage)
+                        {
+                            <a role="button" class="page-item btn btn-primary" href="@Url.Action("Browse", "Employee" , new { page = ViewBag.NextPage })">
+                                Next &gt;
+                            </a>
+                        }
+                        else
+                        {
+                            <a role="button" class="page-item btn btn-primary disabled" href="@Url.Action("Browse", "Employee" , new { page = ViewBag.NextPage })" aria-disabled="true">
+                                Next &gt;
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
